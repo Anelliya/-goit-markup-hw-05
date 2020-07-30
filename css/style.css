@@ -27,6 +27,7 @@ html {
 }
 
 img {
+  margin: 0;
   display: block;
   width: 100%;
   height: auto;
@@ -108,6 +109,9 @@ h2 {
 }
 
 .navigation-list .link {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  transition: color 250ms linear;
   font-weight: 500;
   font-size: var(--main-font-size);
   line-height: 1.14;
@@ -115,13 +119,21 @@ h2 {
   color: var(--first-text-color);
 }
 
-.navigation-list .link {
-  padding-top: 25px;
-  padding-bottom: 25px;
+.navigation-list-item .activ-link-color {
+  position: relative;
+  color: var(--accent-color);
 }
 
-.navigation-list-item .studio {
-  color: var(--accent-color);
+.navigation-list-item .activ-link-color::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  content: "";
+  display: inline-block;
+  width: 100%;
+  height: 4px;
+  background-color: #2196f3;
+  border-radius: 2px;
 }
 
 .navigation-list-item:not(:last-child) {
@@ -140,12 +152,12 @@ h2 {
 
 .header .mail {
   margin-right: var(--margin-right-list);
-
   font-weight: 500;
   font-size: var(--main-font-size);
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--second-text-color);
+  transition: color 250ms linear;
 }
 
 .address-element-pic {
@@ -156,13 +168,17 @@ h2 {
 }
 
 .mail-pic {
+  transition: color 250ms linear;
   width: 16px;
   height: 11px;
+  transition: color 250ms linear;
 }
 
 .phone-pic {
+  transition: color 250ms linear;
   width: 10px;
   height: 15px;
+  transition: color 250ms linear;
 }
 
 .address-element-container {
@@ -182,17 +198,18 @@ h2 {
 
 .header .phone {
   align-items: flex-end;
-
   font-weight: 500;
   font-size: var(--main-font-size);
   line-height: var(--second-font-size);
   letter-spacing: 0.02em;
   color: var(--second-text-color);
+  transition: color 250ms linear;
 }
 
 .header .phone:hover,
 .header .phone:focus {
   color: var(--accent-color);
+  transition: color 250ms linear;
 }
 
 /*главный герой*/
@@ -333,20 +350,21 @@ h2 {
 }
 
 .what-are-we-do-list {
+  position: relative;
   width: 370px;
 }
 
 .what-are-we-do-list .item {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
   padding-top: 27px;
   padding-bottom: 27px;
+  background-color: rgba(47, 48, 58, 0.8);
 }
 
 .what-are-we-do-list:not(:last-child) {
   margin-right: var(--margin-right-list);
-}
-
-.what-are-we-do-list .item {
-  background-color: rgba(47, 48, 58, 0.8);
 }
 
 /*наша команда*/
@@ -391,11 +409,12 @@ h2 {
   justify-content: center;
   width: 44px;
   height: 44px;
+  border-radius: 50%;
+  transition: background-color 250ms linear;
 }
 
 .social-list-item:hover {
   background-color: var(--accent-color);
-  border-radius: 50%;
 }
 
 .social-list-item:hover .social-items {
@@ -470,6 +489,7 @@ h2 {
   height: 90px;
   border: 1px solid #afb1b8;
   border-radius: 4px;
+  transition: background-color 250ms linear;
 }
 
 .client-pic {
@@ -531,10 +551,11 @@ h2 {
   line-height: 1.17;
   letter-spacing: 0.03em;
   color: rgba(255, 255, 255, 0.6);
+  transition: background-color 250ms linear;
 }
 
 .footer-mail {
-  padding-bottom: 9px;
+  margin-bottom: 9px;
 }
 
 .footer .contacts-item:hover,
@@ -593,6 +614,7 @@ h2 {
   height: 38px;
   background: #f5f4fa;
   border-radius: 4px;
+  transition: background-color 250ms linear;
 }
 
 .portfolio-filter-item:not(:last-child) {
@@ -647,11 +669,41 @@ h2 {
   padding-bottom: 20px;
   width: 370px;
   border: 1px solid #eeeeee;
+  transition: box-shadow 250ms linear;
+}
+
+.overlay-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.overlay-wrapper:hover .project-list-overlay {
+  transform: translateY(0%);
 }
 
 .project-list-element:hover {
   box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06),
     0px 1px 1px rgba(0, 0, 0, 0.12);
+}
+
+.project-list-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateY(100%);
+  transition: 250ms;
+  padding: 63px 24px;
+  width: 322px;
+  height: 168px;
+  font-family: Roboto;
+  font-size: 18px;
+  line-height: 28px;
+  background-color: rgba(33, 150, 243, 0.9);
+  letter-spacing: 0.03em;
+  color: #ffffff;
 }
 
 .project .item:nth-last-child(-n + 3) {
@@ -674,10 +726,6 @@ h2 {
 
 .project .item:nth(3n) {
   margin-right: 0;
-}
-
-.project .item .img {
-  margin-bottom: 20px;
 }
 
 .project .item .description {
